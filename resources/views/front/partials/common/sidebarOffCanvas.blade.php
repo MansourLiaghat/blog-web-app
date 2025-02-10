@@ -48,7 +48,7 @@
                     <li class="nav-item my-1 bg-light"><a class="nav-link" style="font-size: 17px;" href="">همه
                             مقالات</a></li>
                     <li class="nav-item my-1 bg-light"><a class="nav-link" style="font-size: 17px;"
-                                                          href="dashboard.html">داشبورد</a></li>
+                                                          href="{{route('dashboard.index')}}">داشبورد</a></li>
                     <li class="nav-item my-1 bg-light"><a class="nav-link" style="font-size: 17px;" href="">افزودن
                             مقاله</a></li>
                     <li class="nav-item my-1 bg-light"><a class="nav-link" style="font-size: 17px;" href="">ویرایش

@@ -3,7 +3,7 @@
     <nav class="navbar navbar-expand-xl">
         <div class="container">
             <!-- Logo START -->
-            <a class="navbar-brand me-3" href="index.html">
+            <a class="navbar-brand me-3" href="{{route('front.index')}}">
                 <img class="navbar-brand-item light-mode-item" src="{{Vite::images('logo.svg')}}" alt="logo">
                 <img class="navbar-brand-item dark-mode-item" src="{{Vite::images('logo-light.svg')}}" alt="logo">
             </a>
@@ -20,22 +20,26 @@
                 <ul class="navbar-nav navbar-nav-scroll mx-auto">
 
                     <!-- Nav item 1 Demos -->
-                    <li class="nav-item"><a class="nav-link" href="dashboard.html"><i class="bi bi-house-door me-1"></i>پیشخوان</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{{route('dashboard.index')}}"><i class="bi bi-house-door
+                    me-1"></i>پیشخوان</a></li>
 
                     <!-- Nav item 2 Post -->
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" id="postMenu" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="bi bi-pencil me-1"></i>مدیریت اخبار</a>
                         <ul class="dropdown-menu" aria-labelledby="postMenu">
                             <!-- dropdown submenu -->
-                            <li> <a class="dropdown-item" href="dashboard-post-list.html">همه خبرها</a> </li>
+                            <li> <a class="dropdown-item" href="{{route('news.list')}}">همه خبرها</a> </li>
 
-                            <li> <a class="dropdown-item" href="dashboard-post-create.html">ایجاد خبر</a> </li>
-                            <li> <a class="dropdown-item" href="dashboard-post-edit.html">ویرایش خبر</a> </li>
-                            <li> <a class="dropdown-item" href="dashboard-post-categories.html">افزودن دسته بندی</a> </li>
+                            <li> <a class="dropdown-item" href="{{route('news.create')}}">ایجاد خبر</a> </li>
+                            <li> <a class="dropdown-item" href="{{route('news.edit')}}">ویرایش خبر</a> </li>
+                            <li> <a class="dropdown-item" href="{{route('add.category')}}">افزودن دسته بندی</a> </li>
                         </ul>
                     </li>
-                    <li class="nav-item"><a class="nav-link" href="dashboard-reviews.html"><i class="bi bi-chat-dots me-1"></i>مدیریت دیدگاه ها</a></li>
-                    <li class="nav-item"><a class="nav-link" href="dashboard-reviews.html"><i class="bi bi-people me-1 fs-5"></i>مدیریت کاربران</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{{route('comments')}}"><i class="bi bi-chat-dots
+                    me-1"></i>مدیریت
+                            دیدگاه ها</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{{route('users')}}"><i class="bi bi-people me-1
+                    fs-5"></i>مدیریت کاربران</a></li>
                 </ul>
             </div>
             <!-- Main navbar END -->
