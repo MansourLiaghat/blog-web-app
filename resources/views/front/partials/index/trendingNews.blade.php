@@ -50,6 +50,19 @@
         </div> <!-- Row END -->
     </div>
 </section>
+@auth()
+    {{'logged'}}
+@endauth
+
+@guest()
+    {{"not login"}}
+@endguest
+
+
+@error('success')
+{{$message}}
+@enderror
+
 <!-- =======================
 Trending END -->
 

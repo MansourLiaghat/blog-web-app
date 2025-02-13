@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Authentication\AuthenticationController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
@@ -38,6 +39,15 @@ Route::group(['prefix' => '/dashboard'],function (){
 });
 
 
+## Route Auth
+Route::view('/register','authentication.register')->name('register');
+Route::Post('/register',[AuthenticationController::class,'create']);
+Route::view('/login','authentication.login')->name('login');
+
+
+
+
+
 //Route::get('/dashboard', function () {
 //    return view('dashboard');
 //})->middleware(['auth', 'verified'])->name('dashboard');
@@ -48,4 +58,4 @@ Route::group(['prefix' => '/dashboard'],function (){
 //    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 //});
 
-require __DIR__.'/auth.php';
+//require __DIR__.'/auth.php';
