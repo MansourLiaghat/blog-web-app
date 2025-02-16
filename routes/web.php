@@ -46,8 +46,6 @@ Route::view('/login','authentication.login')->name('login');
 
 
 
-
-
 //Route::get('/dashboard', function () {
 //    return view('dashboard');
 //})->middleware(['auth', 'verified'])->name('dashboard');

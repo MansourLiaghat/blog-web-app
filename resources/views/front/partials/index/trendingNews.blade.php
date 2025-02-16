@@ -50,6 +50,10 @@
         </div> <!-- Row END -->
     </div>
 </section>
+@error('successLogin')
+{{$message}}
+@enderror
+
 @auth()
     {{'logged'}}
 @endauth
@@ -59,9 +63,7 @@
 @endguest
 
 
-@error('success')
-{{$message}}
-@enderror
+
 
 <!-- =======================
 Trending END -->

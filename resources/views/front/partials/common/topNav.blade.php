@@ -57,6 +57,7 @@
             </div>
             <!-- Main navbar END -->
 
+            {{session()->get('successLogin')}}
 
             <!-- Nav right START -->
             <div class="nav flex-nowrap align-items-center">

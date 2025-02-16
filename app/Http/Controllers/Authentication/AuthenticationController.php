@@ -3,9 +3,11 @@
 namespace App\Http\Controllers\Authentication;
 
 use App\Http\Controllers\Controller;
+use App\Mail\WelcomeMail;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Validation\Rules\Password;
 use function Laravel\Prompts\password;
 
@@ -31,7 +33,16 @@ class AuthenticationController extends Controller
             ]
         );
         $user = User::create($data);
-        Auth::login($user);
-        return redirect()->route('front.index')->withErrors('successLogin', auth()->user()->name . 'سلاااااااااااااااااااااااااام');
+
+        if ($user) {
+            Auth::login($user);
+            Mail::to($data['email'])->send(new WelcomeMail(Auth::user(),$request->password));
+
+        } else {
+            return redirect()->back()->with('error','فرآیند ثبت نام با خطا مواجه شد ، لطفا مجدد اقدام بفرمایید');
+
+        }
+        return redirect()->route('front.index')->with('successLogin', Auth::user()->name .'عزیز خوش آمدید');
+
     }
 }
