@@ -35,4 +35,9 @@ return [
         ],
     ],
 
+    'google_repactcha_v3'=>[
+        'site_key'=>env('GOOGLE_REPACTCHA_V3_SITE_KEY'),
+        'secret_key'=>env('GOOGLE_REPACTCHA_V3_SECRET_KEY')
+    ]
+
 ];

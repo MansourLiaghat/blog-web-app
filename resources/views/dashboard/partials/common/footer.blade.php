@@ -41,6 +41,15 @@
 <script src="ahttps://cdnjs.cloudflare.com/ajax/libs/overlayscrollbars/1.13.0/js/OverlayScrollbars.min.js"></script>
 
 
+{{--GOOGLE reCAPTCHA--}}
+<script src="https://www.google.com/recaptcha/api.js"></script>
+
+<script>
+    function onSubmit(token) {
+        document.getElementById("registerForm").submit();
+    }
+</script>
+
 </body>
 
 </html>

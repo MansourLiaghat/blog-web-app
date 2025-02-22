@@ -1,6 +1,24 @@
 @extends('layout.dashboard.layoutDashboard')
 @section('content')
-<main>
+    <main>
+
+
+        @if($errors->has('g-recaptcha-response'))
+            <div class="alert alert-danger">
+
+                <ul class="list-group">
+                        <li class="list-item">
+                            {{$errors->first('g-recaptcha-response')}}
+{{--                            @error('g-recaptcha-response')--}}
+{{--                            {{$message}}--}}
+{{--                            @enderror--}}
+                        </li>
+
+                </ul>
+            </div>
+
+        @endif
+
 
         <!-- =======================
         Inner intro START -->
@@ -11,7 +29,7 @@
                         <div class="rounded custom-box-shadow rounded p-4 p-sm-5">
                             <h2>ثبت نام در سایت </h2>
                             <!-- Form START -->
-                            <form class="mt-4" action="{{route('register')}}" method="POST">
+                            <form class="mt-4" id="registerForm" action="{{route('register')}}" method="POST">
                                 @csrf
                                 <!-- Name -->
                                 <div class="mb-3">
@@ -19,7 +37,8 @@
                                     <input type="text" class="form-control @error('name') border-danger @enderror "
                                            name="name"
                                            id="exampleInputEmail1"
-                                           aria-describedby="emailHelp" value="{{old('name')}}" placeholder="نام کاربری">
+                                           aria-describedby="emailHelp" value="{{old('name')}}"
+                                           placeholder="نام کاربری">
                                     @error('name')
                                     <p>{{$message}}</p>
                                     @enderror
@@ -38,7 +57,9 @@
                                 <!-- Password -->
                                 <div class="mb-3">
                                     <label class="form-label" for="exampleInputPassword1">رمز عبور</label>
-                                    <input type="password" class="form-control @error('password') border-danger @enderror" name="password"
+                                    <input type="password"
+                                           class="form-control @error('password') border-danger @enderror"
+                                           name="password"
                                            id="exampleInputPassword1"
                                            placeholder="*********">
                                     @error('password')
@@ -48,7 +69,9 @@
                                 <!-- Password -->
                                 <div class="mb-3">
                                     <label class="form-label" for="exampleInputPassword2">تایید رمز عبور</label>
-                                    <input type="password" class="form-control @error('password_confirmation') border-danger @enderror" name="password_confirmation"
+                                    <input type="password"
+                                           class="form-control @error('password_confirmation') border-danger @enderror"
+                                           name="password_confirmation"
                                            id="exampleInputPassword2"
                                            placeholder="*********">
                                     @error('password_confirmation')
@@ -58,7 +81,11 @@
                                 <!-- Button -->
                                 <div class="row align-items-center">
                                     <div class="col-sm-4">
-                                        <button type="submit" class="btn btn-success">ثبت نام</button>
+                                        <button type="submit" class="g-recaptcha btn btn-success"
+                                                data-sitekey="{{config('services.google_repactcha_v3.site_key')}}"
+                                                data-callback='onSubmit'
+                                                data-action='submitRegister'>ثبت نام
+                                        </button>
                                     </div>
                                     <div class="col-sm-8 text-sm-end">
                                         <span>آیا قبلا ثبت نام کرده اید؟ <a href="signin.html"><u>ورود</u></a></span>

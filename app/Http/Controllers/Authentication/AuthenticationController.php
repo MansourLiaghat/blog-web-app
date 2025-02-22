@@ -3,8 +3,10 @@
 namespace App\Http\Controllers\Authentication;
 
 use App\Http\Controllers\Controller;
+use App\Mail\VerifyEmail;
 use App\Mail\WelcomeMail;
 use App\Models\User;
+use App\Rules\GoogleRecaptchaV3;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Mail;
@@ -20,7 +22,8 @@ class AuthenticationController extends Controller
             "email" => ["required", "unique:users", "email",],
             "password" => ["required", "confirmed", Password::min(8)->mixedCase()->letters()->numbers()
                 ->symbols()],
-            "password_confirmation" => ["required"]
+            "password_confirmation" => ["required"],
+            "g-recaptcha-response" => ['required' , new GoogleRecaptchaV3('submitRegister')]
         ],
             ["name.required" => "نوشتن نام الزامی است",
                 "email.required" => "نوشتن ایمیل الزامی است",
@@ -32,17 +35,15 @@ class AuthenticationController extends Controller
                 "password_confirmation.required" => "تائید رمز عبور الزامی است"
             ]
         );
-        $user = User::create($data);
 
+        $user = User::create($data);
         if ($user) {
             Auth::login($user);
-            Mail::to($data['email'])->send(new WelcomeMail(Auth::user(),$request->password));
-
+            Mail::to($data['email'])->send(new WelcomeMail(Auth::user(), $request->password));
         } else {
-            return redirect()->back()->with('error','فرآیند ثبت نام با خطا مواجه شد ، لطفا مجدد اقدام بفرمایید');
-
+            return redirect()->back()->with('error', 'فرآیند ثبت نام با خطا مواجه شد ، لطفا مجدد اقدام بفرمایید');
         }
-        return redirect()->route('front.index')->with('successLogin', Auth::user()->name .'عزیز خوش آمدید');
-
+        return redirect()->route('front.index')->with('successLogin', Auth::user()->name . 'عزیز خوش آمدید');
     }
 }
+

@@ -18,6 +18,8 @@
     <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/apexcharts/3.27.3/apexcharts.min.css">
     <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/overlayscrollbars/1.13.0/css/OverlayScrollbars.min.css">
 
+    <script src="https://www.google.com/recaptcha/api.js"></script>
+
     <!-- Theme CSS -->
     @vite(['resources/assets/css/app.css','resources/assets/js/app.js'])
 
