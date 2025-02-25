@@ -47,6 +47,7 @@ Route::view('/register','authentication.register')->name('register');
 Route::Post('/register',[AuthenticationController::class,'create']);
 Route::view('/login','authentication.login')->name('login');
 Route::POST('/login',[AuthenticationController::class,'login'])->name('loginP');
+Route::get('/logout',[AuthenticationController::class,'logout'])->name('logout');
 
 
 

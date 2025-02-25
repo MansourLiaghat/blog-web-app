@@ -70,7 +70,15 @@ class AuthenticationController extends Controller
             return redirect()->back()->with('error', 'نام کاربری و یا رمزعبور اشتباه است');
         }
 
+    }
 
+
+    public function logout(Request $request)
+    {
+        Auth::logout();
+        $request->session()->invalidate();
+        $request->session()->regenerate();
+        return redirect()->route('front.index')->with('success',$request->name .'با موفقیت خارج شدید');
     }
 }
 

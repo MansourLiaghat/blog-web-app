@@ -47,6 +47,8 @@
                             مقالات</a></li>
                     <li class="nav-item my-1 bg-light"><a class="nav-link" style="font-size: 17px;" href="">مدیریت
                             دیدگاه ها</a></li>
+                    <li class="nav-item my-1 bg-light"><a class="nav-link" style="font-size: 17px;"
+                                                          href="{{route('logout')}}">خروج</a></li>
                 </ul>
             </div>
         </div>
