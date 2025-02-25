@@ -23,7 +23,7 @@ class AuthenticationController extends Controller
             "password" => ["required", "confirmed", Password::min(8)->mixedCase()->letters()->numbers()
                 ->symbols()],
             "password_confirmation" => ["required"],
-            "g-recaptcha-response" => ['required' , new GoogleRecaptchaV3('submitRegister')]
+//            "g-recaptcha-response" => ['required' , new GoogleRecaptchaV3('submitRegister')]
         ],
             ["name.required" => "نوشتن نام الزامی است",
                 "email.required" => "نوشتن ایمیل الزامی است",
@@ -43,7 +43,34 @@ class AuthenticationController extends Controller
         } else {
             return redirect()->back()->with('error', 'فرآیند ثبت نام با خطا مواجه شد ، لطفا مجدد اقدام بفرمایید');
         }
-        return redirect()->route('front.index')->with('successLogin', Auth::user()->name . 'عزیز خوش آمدید');
+        return redirect()->route('front.index')->with('success', Auth::user()->name . 'عزیز خوش آمدید');
+    }
+
+
+    public function login(Request $request)
+    {
+
+        $credentials = $request->validate([
+            'email' => ['required', 'email'],
+            'password' => ['required']
+        ],
+            [
+                "email.required" => "نوشتن ایمیل الزامی است",
+                "email.email" => "ایمیل معتبر وارد کنید",
+                "password.required" => "رمزعبور الزامی است",
+            ]);
+
+
+        if (Auth::attempt($credentials, remember: '')) {
+            $request->session()->regenerate();
+
+            return redirect()->route('front.index')->with('success', Auth::user()->name . 'خوش آمدید');
+
+        } else {
+            return redirect()->back()->with('error', 'نام کاربری و یا رمزعبور اشتباه است');
+        }
+
+
     }
 }
 

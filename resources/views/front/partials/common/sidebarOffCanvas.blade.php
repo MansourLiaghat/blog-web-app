@@ -11,15 +11,7 @@
             <img class="dark-mode-item my-3" src="{{Vite::images('logo-light.svg')}}" alt="logo">
             <p style="line-height: 2;">موضوع وبلاگ، اخبار و مجله نسل بعدی برای شما برای شروع به اشتراک گذاری داستان های
                 خود از امروز! </p>
-            <!-- Nav START -->
-            <!-- <ul class="nav d-block flex-column my-4">
-                <li class="nav-item h5">
-                    <a class="nav-link" href="index.html">ورود</a>
-                <li class="nav-item h5">
-                    <a class="nav-link" href="about-us.html">ثبت نام</a>
-                </li>
-            </ul> -->
-            <!-- Nav END -->
+
             <p class="text-center">پروفایل</p>
             <div class="d-flex flex-column justify-content-center align-items-center">
                 <img class="offcanvas-avatar avatar-img p-1 mb-2" src="{{Vite::images('avatar/vahid.jpeg')}}" alt="">

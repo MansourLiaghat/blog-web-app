@@ -50,7 +50,7 @@
         </div> <!-- Row END -->
     </div>
 </section>
-@error('successLogin')
+@error('success')
 {{$message}}
 @enderror
 

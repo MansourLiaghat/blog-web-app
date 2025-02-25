@@ -8,6 +8,9 @@ Route::get('/', function () {
     return view('front.index');
 })->name('front.index');
 
+
+
+
 Route::group(['prefix' => '/dashboard'],function (){
     Route::get('/',function (){
         return view('dashboard.index');
@@ -43,6 +46,7 @@ Route::group(['prefix' => '/dashboard'],function (){
 Route::view('/register','authentication.register')->name('register');
 Route::Post('/register',[AuthenticationController::class,'create']);
 Route::view('/login','authentication.login')->name('login');
+Route::POST('/login',[AuthenticationController::class,'login'])->name('loginP');
 
 
 

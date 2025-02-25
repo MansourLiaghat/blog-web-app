@@ -56,8 +56,7 @@
                 </ul>
             </div>
             <!-- Main navbar END -->
-
-            {{session()->get('successLogin')}}
+            {{session()->get('success')}}
 
             <!-- Nav right START -->
             <div class="nav flex-nowrap align-items-center">
@@ -147,13 +146,28 @@
                     </ul>
                 </div>
 
-                <!-- Offcanvas menu toggler -->
-                <div class="nav-item align-self-end">
-                    <a class="nav-link p-0" onclick="openedSidebar()" data-bs-toggle="offcanvas" href="#offcanvasMenu"
-                       role="button" aria-controls="offcanvasMenu">
-                        <i class="bi bi-text-right rtl-flip fs-2" data-bs-target="#offcanvasMenu"> </i>
-                    </a>
-                </div>
+                @auth()
+                    <!-- Offcanvas menu toggler -->
+                    <div class="nav-item align-self-end">
+                        <a class="nav-link p-0" onclick="openedSidebar()" data-bs-toggle="offcanvas"
+                           href="#offcanvasMenu"
+                           role="button" aria-controls="offcanvasMenu">
+                            <i class="bi bi-text-right rtl-flip fs-2" data-bs-target="#offcanvasMenu"> </i>
+                        </a>
+                    </div>
+                @endauth
+                @guest
+                    <!-- Nav START -->
+                    <ul class="nav d-block flex-column my-4">
+                        <li class="nav-item h5">
+                            <a class="nav-link" href="{{route('login')}}">ورود</a>
+                        <li class="nav-item h5">
+                            <a class="nav-link" href="{{route('register')}}">ثبت نام</a>
+                        </li>
+                    </ul>
+                    <!-- Nav END -->
+                @endguest
+
             </div>
             <!-- Nav right END -->
         </div>
