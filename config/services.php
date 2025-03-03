@@ -35,9 +35,22 @@ return [
         ],
     ],
 
-    'google_repactcha_v3'=>[
-        'site_key'=>env('GOOGLE_REPACTCHA_V3_SITE_KEY'),
-        'secret_key'=>env('GOOGLE_REPACTCHA_V3_SECRET_KEY')
-    ]
+    'google_repactcha_v3' => [
+        'site_key' => env('GOOGLE_REPACTCHA_V3_SITE_KEY'),
+        'secret_key' => env('GOOGLE_REPACTCHA_V3_SECRET_KEY')
+    ],
 
+    'google' => [
+        'client_id' => env('GOOGLE_CLIENT_ID'),
+        'client_secret' => env('GOOGLE_CLIENT_SECRET'),
+        'redirect' => env('GOOGLE_REDIRECT')
+
+    ],
+
+    'github' => [
+        'client_id' => env('GITHUB_CLIENT_ID'),
+        'client_secret' => env('GITHUB_CLIENT_SECRET'),
+        'redirect' => env('GITHUB_REDIRECT')
+
+    ],
 ];

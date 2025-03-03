@@ -100,11 +100,15 @@
                                 <p>برای دسترسی سریع با شبکه اجتماعی خود وارد شوید</p>
                                 <ul class="list-unstyled d-flex mt-3 justify-content-center">
                                     <li class="mx-2">
-                                        <a href="#" class="btn btn-light d-inline-block fs-6">github<i
+                                        <a href="{{route('auth.redirect','github')}}" class="btn btn-light
+                                        d-inline-block
+                                        fs-6">github<i
                                                 class="fab fa-github text-dark align-middle ms-2 fs-5"></i></a>
                                     </li>
                                     <li class="mx-2">
-                                        <a href="#" class="btn btn-light d-inline-block fs-6">google<i
+                                        <a href="{{route('auth.redirect','google')}}" class="btn btn-light
+                                        d-inline-block
+                                        fs-6">google<i
                                                 class="fab fa-google text-danger align-middle ms-2 fs-5"></i></a>
                                     </li>
                                 </ul>

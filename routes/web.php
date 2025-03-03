@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Authentication\AuthenticationController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\Socialight\SocialLoginController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -48,6 +49,12 @@ Route::Post('/register',[AuthenticationController::class,'create']);
 Route::view('/login','authentication.login')->name('login');
 Route::POST('/login',[AuthenticationController::class,'login'])->name('loginP');
 Route::get('/logout',[AuthenticationController::class,'logout'])->name('logout');
+
+
+## Socialight Route
+Route::get('/auth/{driver}/redirect' , [SocialLoginController::class,'redirect'])->name('auth.redirect');
+Route::get('/auth/{driver}/callback' , [SocialLoginController::class,'callback'])->name('auth.callback');
+
 
 
 

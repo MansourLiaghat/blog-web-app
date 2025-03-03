@@ -11,6 +11,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Validation\Rules\Password;
+use Tymon\JWTAuth\Facades\JWTAuth;
 use function Laravel\Prompts\password;
 
 class AuthenticationController extends Controller
@@ -39,11 +40,12 @@ class AuthenticationController extends Controller
         $user = User::create($data);
         if ($user) {
             Auth::login($user);
+            $token = JWTAuth::fromUser($user, ['exp' => now()->addDays(7)->timestamp]);
             Mail::to($data['email'])->send(new WelcomeMail(Auth::user(), $request->password));
         } else {
             return redirect()->back()->with('error', 'فرآیند ثبت نام با خطا مواجه شد ، لطفا مجدد اقدام بفرمایید');
         }
-        return redirect()->route('front.index')->with('success', Auth::user()->name . 'عزیز خوش آمدید');
+        return redirect()->route('front.index')->with('success', Auth::user()->name . "عزیز خوش آمدید $token");
     }
 
 
@@ -59,16 +61,24 @@ class AuthenticationController extends Controller
                 "email.email" => "ایمیل معتبر وارد کنید",
                 "password.required" => "رمزعبور الزامی است",
             ]);
+        if ($user = Auth::user()) {
+            JWTAuth::invalidate(JWTAuth::getToken());
+        }
 
-
-        if (Auth::attempt($credentials, remember: '')) {
+        if ($token = JWTAuth::attempt($credentials, ['exp' => now()->addDays(7)->timestamp])) {
             $request->session()->regenerate();
-
-            return redirect()->route('front.index')->with('success', Auth::user()->name . 'خوش آمدید');
-
         } else {
             return redirect()->back()->with('error', 'نام کاربری و یا رمزعبور اشتباه است');
         }
+
+//        if (Auth::attempt($credentials, remember: '')) {
+//            $request->session()->regenerate();
+//
+//            return redirect()->route('front.index')->with('success', Auth::user()->name . 'خوش آمدید');
+//
+//        } else {
+//            return redirect()->back()->with('error', 'نام کاربری و یا رمزعبور اشتباه است');
+//        }
 
     }
 
