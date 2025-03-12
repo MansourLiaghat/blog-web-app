@@ -91,6 +91,11 @@
                                         <span>آیا قبلا ثبت نام کرده اید؟ <a href="{{route('login')
                                         }}"><u>ورود</u></a></span>
                                     </div>
+                                    <div class="mb-3 form-check">
+                                        <input type="checkbox" name="subscribed" class="form-check-input"
+                                               id="subscribed">
+                                        <label class="form-check-label" for="subscribed">اشتراک شدن</label>
+                                    </div>
                                 </div>
                             </form>
                             <!-- Form END -->

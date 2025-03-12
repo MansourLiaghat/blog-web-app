@@ -2,14 +2,16 @@
 
 namespace App\Http\Controllers\Authentication;
 
+use App\Events\UserSubscribe;
 use App\Http\Controllers\Controller;
+use App\Listeners\sendWelcomeMail;
 use App\Mail\VerifyEmail;
 use App\Mail\WelcomeMail;
 use App\Models\User;
 use App\Rules\GoogleRecaptchaV3;
+use Illuminate\Auth\Events\Registered;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Mail;
 use Illuminate\Validation\Rules\Password;
 use Tymon\JWTAuth\Facades\JWTAuth;
 use function Laravel\Prompts\password;
@@ -38,10 +40,20 @@ class AuthenticationController extends Controller
         );
 
         $user = User::create($data);
+
         if ($user) {
+
             Auth::login($user);
+
             $token = JWTAuth::fromUser($user, ['exp' => now()->addDays(7)->timestamp]);
-            Mail::to($data['email'])->send(new WelcomeMail(Auth::user(), $request->password));
+            event(new Registered($user,$request->password));
+
+
+
+            if ($request->subscribed) {
+                event(new UserSubscribe($user));
+            }
+
         } else {
             return redirect()->back()->with('error', 'فرآیند ثبت نام با خطا مواجه شد ، لطفا مجدد اقدام بفرمایید');
         }
@@ -88,7 +100,7 @@ class AuthenticationController extends Controller
         Auth::logout();
         $request->session()->invalidate();
         $request->session()->regenerate();
-        return redirect()->route('front.index')->with('success',$request->name .'با موفقیت خارج شدید');
+        return redirect()->route('front.index')->with('success', $request->name . 'با موفقیت خارج شدید');
     }
 }
 
