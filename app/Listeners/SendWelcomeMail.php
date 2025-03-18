@@ -2,6 +2,7 @@
 
 namespace App\Listeners;
 
+use App\Jobs\SendWelcomeMailJob;
 use Illuminate\Auth\Events\Registered;
 use App\Mail\WelcomeMail;
 use Illuminate\Contracts\Queue\ShouldQueue;
@@ -23,7 +24,6 @@ class SendWelcomeMail
      */
     public function handle(Registered $event): void
     {
-        Mail::to($event->user->email)->send(new WelcomeMail($event->user,$event->password));
-
+        SendWelcomeMailJob::dispatch($event->user,$event->password)->delay(now()->addMinute(1));
     }
 }
