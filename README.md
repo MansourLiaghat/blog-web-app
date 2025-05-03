@@ -1,66 +1,116 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# 📰 وب‌سایت خبری با Laravel
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+[![Build Status](https://img.shields.io/badge/build-passing-brightgreen)](https://github.com/MansourLiaghat/blog-web-app)  
+[![License](https://img.shields.io/badge/license-MIT-blue)](LICENSE)  
+[![Version](https://img.shields.io/badge/version-1.0.0-blue)](https://github.com/MansourLiaghat/blog-web-app/releases)
 
-## About Laravel
+> 📌 **توجه:**  
+> این پروژه در حال حاضر در مرحله توسعه فعال قرار دارد و نسخه نهایی هنوز منتشر نشده است.
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+این پروژه یک وب‌سایت خبری ساده است که با استفاده از فریم‌ورک Laravel توسعه یافته است. هدف اصلی این پروژه، تمرین و یادگیری مفاهیم مختلف Laravel از جمله مسیریابی، کنترلرها، مدل‌ها، ویوها و تعامل با پایگاه داده است.
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+## 📚 فهرست مطالب
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+- [ویژگی‌ها](#ویژگیها)
+- [پیش‌نیازها](#پیشنیازها)
+- [نصب و راه‌اندازی](#نصب-و-راهاندازی)
+- [نحوه استفاده](#نحوه-استفاده)
+- [ساختار پروژه](#ساختار-پروژه)
+- [مجوز](#مجوز)
+- [اطلاعات تماس](#اطلاعات-تماس)
 
-## Learning Laravel
+## ✨ ویژگی‌ها
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+- نمایش لیست اخبار با استفاده از پایگاه داده  
+- مشاهده جزئیات هر خبر  
+- افزودن، ویرایش و حذف اخبار (CRUD)  
+- استفاده از Blade برای قالب‌بندی صفحات  
+- طراحی واکنش‌گرا با استفاده از Tailwind CSS  
+- ساختار ماژولار و قابل توسعه  
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+## ⚙️ پیش‌نیازها
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+- PHP نسخه 8.0 یا بالاتر  
+- Composer  
+- MySQL یا PostgreSQL  
+- Node.js و NPM  
+- Laravel نسخه 9 یا بالاتر  
 
-## Laravel Sponsors
+## 🚀 نصب و راه‌اندازی
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+1. کلون کردن مخزن پروژه:
 
-### Premium Partners
+   ```bash
+   git clone https://github.com/MansourLiaghat/blog-web-app.git
+   cd blog-web-app
+   ```
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[WebReinvent](https://webreinvent.com/)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Jump24](https://jump24.co.uk)**
-- **[Redberry](https://redberry.international/laravel/)**
-- **[Active Logic](https://activelogic.com)**
-- **[byte5](https://byte5.de)**
-- **[OP.GG](https://op.gg)**
+2. نصب وابستگی‌های PHP:
 
-## Contributing
+   ```bash
+   composer install
+   ```
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+3. تنظیم فایل محیطی `.env`:
 
-## Code of Conduct
+   ```bash
+   cp .env.example .env
+   php artisan key:generate
+   ```
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+4. پیکربندی اتصال پایگاه‌داده در فایل `.env`
 
-## Security Vulnerabilities
+5. اجرای مهاجرت‌ها:
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+   ```bash
+   php artisan migrate
+   ```
 
-## License
+6. نصب وابستگی‌های فرانت‌اند:
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+   ```bash
+   npm install
+   npm run dev
+   ```
+
+7. اجرای سرور توسعه:
+
+   ```bash
+   php artisan serve
+   ```
+
+اکنون پروژه در آدرس `http://localhost:8000` قابل مشاهده است.
+
+## 🧪 نحوه استفاده
+
+- دسترسی به صفحه اصلی برای مشاهده لیست اخبار  
+- کلیک بر روی هر خبر برای مشاهده جزئیات آن  
+- استفاده از فرم‌ها برای افزودن، ویرایش یا حذف اخبار  
+
+## 📁 ساختار پروژه
+
+```
+blog-web-app/
+├── app/
+├── bootstrap/
+├── config/
+├── database/
+├── public/
+├── resources/
+├── routes/
+├── storage/
+├── tests/
+├── .env.example
+├── artisan
+├── composer.json
+├── package.json
+└── README.md
+```
+
+## 📄 مجوز
+
+این پروژه تحت مجوز MIT منتشر شده است. برای اطلاعات بیشتر، فایل [LICENSE](LICENSE) را مشاهده کنید.
+
+## 📬 اطلاعات تماس
+
+- GitHub: [MansourLiaghat](https://github.com/MansourLiaghat)
