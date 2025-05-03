@@ -11,13 +11,14 @@
 
 ## 📚 فهرست مطالب
 
-- [ویژگی‌ها](#ویژگیها)
-- [پیش‌نیازها](#پیشنیازها)
-- [نصب و راه‌اندازی](#نصب-و-راهاندازی)
-- [نحوه استفاده](#نحوه-استفاده)
-- [ساختار پروژه](#ساختار-پروژه)
-- [مجوز](#مجوز)
-- [اطلاعات تماس](#اطلاعات-تماس)
+- [ویژگی‌ها](#-ویژگیها)
+- [پیش‌نیازها](#-پیشنیازها)
+- [نصب و راه‌اندازی](#-نصب-و-راهاندازی)
+- [نحوه استفاده](#-نحوه-استفاده)
+- [ساختار پروژه](#-ساختار-پروژه)
+- [مجوز](#-مجوز)
+- [اطلاعات تماس](#-اطلاعات-تماس)
+- [تشکر و قدردانی](#-تشکر-و-قدردانی)
 
 ## ✨ ویژگی‌ها
 
@@ -38,48 +39,26 @@
 
 ## 🚀 نصب و راه‌اندازی
 
-1. کلون کردن مخزن پروژه:
+```bash
+git clone https://github.com/MansourLiaghat/blog-web-app.git
+cd blog-web-app
 
-   ```bash
-   git clone https://github.com/MansourLiaghat/blog-web-app.git
-   cd blog-web-app
-   ```
+composer install
 
-2. نصب وابستگی‌های PHP:
+cp .env.example .env
+php artisan key:generate
 
-   ```bash
-   composer install
-   ```
+# ویرایش اطلاعات دیتابیس در فایل .env
 
-3. تنظیم فایل محیطی `.env`:
+php artisan migrate
 
-   ```bash
-   cp .env.example .env
-   php artisan key:generate
-   ```
+npm install
+npm run dev
 
-4. پیکربندی اتصال پایگاه‌داده در فایل `.env`
+php artisan serve
+```
 
-5. اجرای مهاجرت‌ها:
-
-   ```bash
-   php artisan migrate
-   ```
-
-6. نصب وابستگی‌های فرانت‌اند:
-
-   ```bash
-   npm install
-   npm run dev
-   ```
-
-7. اجرای سرور توسعه:
-
-   ```bash
-   php artisan serve
-   ```
-
-اکنون پروژه در آدرس `http://localhost:8000` قابل مشاهده است.
+اکنون پروژه در آدرس `http://localhost:8000` در دسترس است.
 
 ## 🧪 نحوه استفاده
 
@@ -114,3 +93,9 @@ blog-web-app/
 ## 📬 اطلاعات تماس
 
 - GitHub: [MansourLiaghat](https://github.com/MansourLiaghat)
+
+## 🙏 تشکر و قدردانی
+
+از استاد گرامی، **مهندس وحید صالحی**  
+[@vahid-salehi](https://github.com/vahid-salehi)  
+به‌خاطر آموزش‌های مفید، راهنمایی‌های کاربردی و نقش مؤثر ایشان در روند یادگیری و توسعه این پروژه، صمیمانه سپاسگزارم.
