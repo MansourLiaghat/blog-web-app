@@ -39,6 +39,7 @@
                                     <input type="checkbox" name="remember" class="form-check-input" id="exampleCheck1">
                                     <label class="form-check-label" for="exampleCheck1">مرا به خاطر بسپار</label>
                                 </div>
+                                <a href="{{route('forgot.password')}}">فراموشی رمز عبور</a>
                                 <!-- Button -->
                                 <div class="row align-items-center">
                                     <div class="col-sm-4">

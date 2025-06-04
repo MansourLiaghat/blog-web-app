@@ -10,51 +10,56 @@ Route::get('/', function () {
 })->name('front.index');
 
 
-
-
-Route::group(['prefix' => '/dashboard'],function (){
-    Route::get('/',function (){
+Route::group(['prefix' => '/dashboard'], function () {
+    Route::get('/', function () {
         return view('dashboard.index');
     })->name('dashboard.index');
 
-    Route::get('/create',function (){
-       return view('dashboard.newsCreate');
+    Route::get('/create', function () {
+        return view('dashboard.newsCreate');
     })->name('news.create');
 
-    Route::get('/list',function (){
+    Route::get('/list', function () {
         return view('dashboard.newsList');
     })->name('news.list');
 
-    Route::get('/edit',function (){
+    Route::get('/edit', function () {
         return view('dashboard.newsEdit');
     })->name('news.edit');
 
-    Route::get('/addCategory',function (){
+    Route::get('/addCategory', function () {
         return view('dashboard.addCategories');
     })->name('add.category');
 
-    Route::get('/comments',function (){
+    Route::get('/comments', function () {
         return view('dashboard.manageComments');
     })->name('comments');
 
-    Route::get('/users',function (){
+    Route::get('/users', function () {
         return view('dashboard.manageUsers');
     })->name('users');
 });
 
 
 ## Route Auth
-Route::view('/register','authentication.register')->name('register');
-Route::Post('/register',[AuthenticationController::class,'create']);
-Route::view('/login','authentication.login')->name('login');
-Route::POST('/login',[AuthenticationController::class,'login'])->name('loginP');
-Route::get('/logout',[AuthenticationController::class,'logout'])->name('logout');
+Route::view('/register', 'authentication.register')->name('register');
+Route::Post('/register', [AuthenticationController::class, 'create']);
+Route::view('/login', 'authentication.login')->name('login');
+Route::POST('/login', [AuthenticationController::class, 'login'])->name('loginP');
+Route::get('/logout', [AuthenticationController::class, 'logout'])->name('logout');
 
 
 ## Socialight Route
-Route::get('/auth/{driver}/redirect' , [SocialLoginController::class,'redirect'])->name('auth.redirect');
-Route::get('/auth/{driver}/callback' , [SocialLoginController::class,'callback'])->name('auth.callback');
+Route::get('/auth/{driver}/redirect', [SocialLoginController::class, 'redirect'])->name('auth.redirect');
+Route::get('/auth/{driver}/callback', [SocialLoginController::class, 'callback'])->name('auth.callback');
 
+
+## Reset Password
+Route::view('/forgot-password', 'authentication.forgot-password')->name('forgot.password');
+Route::post('/forgot-password', [AuthenticationController::class, 'sendResetPasswordLink']);
+
+Route::get('/reset-password/{token}',[AuthenticationController::class,'resetPasswordToken'])->name('password.reset');
+Route::post('reset-password', [AuthenticationController::class, 'updatePassword'])->name('update.password');
 
 
 
